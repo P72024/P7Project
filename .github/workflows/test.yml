@@ -1,7 +1,9 @@
 name: Automate testing
 
-on: [pull-request]
-  branch: [main]
+on:
+  pull_request: 
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   test:
