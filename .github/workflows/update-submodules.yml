@@ -1,30 +1,37 @@
-
-name: Update Submodules from Submodule Repos
+name: 'Submodules Sync'
 
 on:
-  repository_dispatch:
-    types: [update_submodules]
+  # Allows you to run this workflow manually from the Actions tab or through HTTP API
+  workflow_dispatch:
 
 jobs:
-  update-submodules:
+  sync:
+    name: 'Submodules Sync'
     runs-on: ubuntu-latest
 
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
     steps:
-      - name: Checkout parent repository
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.CI_TOKEN }}
+        submodules: true
 
-      - name: Update submodules
-        run: |
-          git submodule init
-          git submodule update --remote --merge 
+    # Update references
+    - name: Git Submodule Update
+      run: |
+        git pull --recurse-submodules
+        git submodule update --remote --recursive
 
-      - name: Commit and push updated submodules
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Automatically updated submodules after submodule changes"
-          git push origin main
-        continue-on-error: true
+    - name: Commit update
+      run: |
+        git config --global user.name 'Git bot'
+        git config --global user.email 'bot@noreply.github.com'
+        git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
+        git commit -am "Auto updated submodule references" && git push || echo "No changes to commit"
+
