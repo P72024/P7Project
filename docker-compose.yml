@@ -1,0 +1,17 @@
+version: '0.0.1'
+services:
+  backend:
+    restart: unless-stopped
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - FLASK_ENV=development
+
+  client:
+    restart: unless-stopped
+    build: ./client
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
