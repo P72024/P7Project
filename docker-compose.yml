@@ -6,7 +6,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - FLASK_ENV=development
+      - ENV=development
 
   client:
     restart: unless-stopped
