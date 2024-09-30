@@ -2,8 +2,10 @@
 	path = client
 	url = https://github.com/P72024/client
 	branch = main
+	ignore = all
 
 [submodule "backend"]
 	path = backend
 	url = https://github.com/P72024/backend
 	branch = main
+	ignore = all
