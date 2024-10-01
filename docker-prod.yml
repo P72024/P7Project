@@ -14,6 +14,8 @@ services:
     volumes:
       - cuda:/usr/local/cuda
       - pip:/root/.cache/pip
+    networks:
+      - app-network
     deploy:
       resources:
         reservations:
@@ -27,4 +29,9 @@ services:
     depends_on:
       - backend
     ports:
-      - "80:80"
+      - "8010:8010"
+    networks:
+      - app-network
+
+networks:
+  app-network:
