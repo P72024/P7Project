@@ -59,8 +59,4 @@ If you encounter any issues, ensure Docker Desktop is running and that no confli
 docker compose logs
 ```
 
-## Contributing
-If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
 
-## License
-Include your project's license here, if applicable.
