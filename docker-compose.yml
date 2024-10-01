@@ -7,6 +7,8 @@ services:
       - "3000:3000"
     environment:
       - ENV=development
+    networks:
+      - app-network
 
   client:
     restart: unless-stopped
@@ -14,4 +16,9 @@ services:
     depends_on:
       - backend
     ports:
-      - "80:80"
+      - "8010:8010"
+    networks:
+      - app-network
+
+networks:
+  app-network:
