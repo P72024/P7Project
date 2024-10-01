@@ -12,10 +12,17 @@ services:
       - ENV=development
     volumes:
       - pip:/root/.cache/pip
+    networks:
+      - app-network
 
   client:
     build: ./client
     depends_on:
       - backend
     ports:
-      - "80:80"
+      - "8010:8010"
+    networks:
+      - app-network
+
+networks:
+  app-network:
