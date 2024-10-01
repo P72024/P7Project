@@ -1,15 +1,19 @@
 version: '0.0.1'
+name: p7project
+volumes:
+  pip:
 services:
   backend:
-    restart: unless-stopped
-    build: ./backend
+    build:
+      context: ./backend
     ports:
       - "3000:3000"
     environment:
       - ENV=development
+    volumes:
+      - pip:/root/.cache/pip
 
   client:
-    restart: unless-stopped
     build: ./client
     depends_on:
       - backend

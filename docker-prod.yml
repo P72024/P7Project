@@ -1,0 +1,30 @@
+version: '0.0.1'
+name: p7project
+volumes:
+  cuda:
+  pip:
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - ENV=production
+    volumes:
+      - cuda:/usr/local/cuda
+      - pip:/root/.cache/pip
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  client:
+    build: ./client
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
