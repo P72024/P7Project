@@ -4,8 +4,7 @@ volumes:
   pip:
 services:
   backend:
-    build:
-      context: ./backend
+    build: ./backend
     ports:
       - "3000:3000"
     environment:
