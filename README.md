@@ -38,6 +38,21 @@ or:
 http://127.0.0.1:8010/
 ```
 
+## Troubleshoot Docker
+When Docker is running, use 
+```
+docker exec -it <container ID>  /bin/sh
+```
+You can find Container ID in Docker Desktop.
+From here you can use commands such as:
+```
+ls <path>
+```
+or: 
+```
+cat <path>
+```
+
 ## Additional Commands
 
 - **Stop the containers**:
