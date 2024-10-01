@@ -53,6 +53,7 @@ or:
 cat <path>
 ```
 
+
 ## Additional Commands
 
 - **Stop the containers**:
@@ -60,6 +61,13 @@ cat <path>
   ```bash
   docker compose down
   ```
+- **Delete images**:
+
+  ```bash
+  docker image rm p7project-client
+  docker image rm p7project-backend
+  ```
+
 
 - **View logs for a specific service**:
 
