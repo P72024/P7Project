@@ -21,13 +21,19 @@ cd P7Project
 ### 2. Start the Application
 Ensure Docker Desktop is running, then execute the following command:
 
-### Development
+### Development (W. and W.o. makefile)
 ```sh
+With Makefile:
+make dev
+Without Makefile:
 docker compose -f docker-dev.yml up --build
 ```
 
-### Production
+### Production (W. and W.o. makefile)
 ```sh
+With Makefile:
+make prod
+Without Makefile:
 docker compose -f docker-prod.yml up --build
 
 This command will build the Docker images (if not already built) and start the containers as defined in your `docker-dev.yml` or `docker-prod.yml` file.
