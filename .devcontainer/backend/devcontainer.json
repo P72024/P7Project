@@ -5,6 +5,9 @@
   "dockerComposeFile": "../../docker-dev.yml",
   "service": "backend",
   "workspaceFolder": "/app",
+  "mounts": [
+    "source=${localWorkspaceFolder}/backend,target=/app,type=bind,consistency=cached"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
