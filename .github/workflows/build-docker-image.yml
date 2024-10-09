@@ -33,6 +33,4 @@ jobs:
         run:  |
             docker compose -f docker-prod.yml build
             docker compose -f docker-prod.yml push
-      
-      - name: Check images
-        run: docker image ls
+            
