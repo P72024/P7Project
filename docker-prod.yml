@@ -40,7 +40,7 @@ services:
     env_file: "secrets.env"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 --cleanup -x watchtower
+    command: --interval 86400 --cleanup -x watchtower
     restart: unless-stopped
 
 networks:
