@@ -7,4 +7,5 @@ dev:
 	docker compose -f docker-dev.yml up --build
 
 prod:
+	docker login ghcr.io
 	docker compose -f docker-prod.yml up --build

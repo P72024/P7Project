@@ -1,11 +1,12 @@
-version: '0.0.1'
+version: '3'
 name: p7project
 volumes:
   cuda:
   pip:
+
 services:
   backend:
-    build: ./backend
+    image: ghcr.io/p72024/p7project/backend:latest
     runtime: nvidia
     ports:
       - "3000:3000"
@@ -25,13 +26,22 @@ services:
               capabilities: [gpu]
 
   client:
-    build: ./client
+    image: ghcr.io/p72024/p7project/client:latest
     depends_on:
       - backend
     ports:
       - "8010:8010"
     networks:
       - app-network
+    
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    env_file: "secrets.env"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 --cleanup -x watchtower
+    restart: unless-stopped
 
 networks:
   app-network:

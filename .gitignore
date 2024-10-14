@@ -1,4 +1,6 @@
 .vscode/
 
+*.env
+
 # mac stuff
 .DS_Store
