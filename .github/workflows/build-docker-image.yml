@@ -1,5 +1,8 @@
 name: Build Image
 
+permissions:
+  packages: write
+
 on:
   release:
     types: [published]
