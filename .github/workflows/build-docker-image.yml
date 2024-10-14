@@ -39,7 +39,7 @@ jobs:
 
       - name: Build and push docker image
         run: |
-            docker compose -f docker-prod.yml build
+            docker compose -f docker-dev.yml build
             docker tag p7project-backend ${{ env.REGISTRY }}/p72024/p7project/backend:latest
             docker tag p7project-client ${{ env.REGISTRY }}/p72024/p7project/client:latest
             docker push ${{ env.REGISTRY }}/p72024/p7project/backend:latest
