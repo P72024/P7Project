@@ -14,7 +14,7 @@ Follow these steps to set up and run the project.
 
 ### 1. Clone the Repository
 ```bash
-git https://github.com/P72024/P7Project
+git clone --recurse-submodules https://github.com/P72024/P7Project
 cd P7Project
 ```
 
