@@ -2,5 +2,7 @@
 
 *.env
 
+ngrok.yml
+
 # mac stuff
 .DS_Store

@@ -9,3 +9,6 @@ dev:
 prod:
 	docker login ghcr.io
 	docker compose -f docker-prod.yml up --build
+
+ngrok:
+	ngrok start --config ./ngrok.yml --all
