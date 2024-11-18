@@ -1,0 +1,37 @@
+version: '0.0.1'
+name: p7project
+volumes:
+  cuda:
+  pip:
+services:
+  backend:
+    build: ./backend
+    runtime: nvidia
+    ports:
+      - "3000:3000"
+    environment:
+      - ENV=production
+    volumes:
+      - cuda:/usr/local/cuda
+      - pip:/root/.cache/pip
+    networks:
+      - app-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  client:
+    build: ./client
+    depends_on:
+      - backend
+    ports:
+      - "8010:8010"
+    networks:
+      - app-network
+
+networks:
+  app-network:
