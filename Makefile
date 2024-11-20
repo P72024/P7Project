@@ -10,5 +10,8 @@ prod:
 	docker login ghcr.io
 	docker compose -f docker-prod.yml up --build
 
+prod-local:
+	docker compose -f docker-prod-local.yml up --build
+
 ngrok:
 	ngrok start --config ./ngrok.yml --all
