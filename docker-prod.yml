@@ -24,15 +24,17 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    restart: unless-stopped
 
   client:
     image: ghcr.io/p72024/p7project/client:latest
     depends_on:
       - backend
     ports:
-      - "8010:8010"
+      - "8080:8080"
     networks:
       - app-network
+    restart: unless-stopped
     
   watchtower:
     image: containrrr/watchtower

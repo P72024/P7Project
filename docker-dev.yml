@@ -13,15 +13,17 @@ services:
       - pip:/root/.cache/pip
     networks:
       - app-network
+    restart: unless-stopped
 
   client:
     build: ./client
     depends_on:
       - backend
     ports:
-      - "8010:8010"
+      - "8080:8080"
     networks:
       - app-network
+    restart: unless-stopped
 
 networks:
   app-network:
