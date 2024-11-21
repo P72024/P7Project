@@ -14,4 +14,5 @@ prod-local:
 	docker compose -f docker-prod-local.yml up --build
 
 ngrok:
+	screen
 	ngrok start --config ./ngrok.yml --all
